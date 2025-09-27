@@ -1,0 +1,51 @@
+{
+  "name": "cookie-extension",
+  "version": "1.0.0",
+  "description": "브라우저 쿠키 값을 .env.local 파일에 저장하는 GUI 도구",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "dev": "electron . --dev"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.okestro.cookie-extractor",
+    "productName": "Cookie Extractor",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "cookie-extractor.js",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "keywords": [
+    "cookie",
+    "browser",
+    "env",
+    "automation",
+    "gui"
+  ],
+  "author": "황제님",
+  "license": "MIT"
+}

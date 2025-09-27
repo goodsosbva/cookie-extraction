@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Extractor</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .header p {
+        opacity: 0.9;
+        font-size: 16px;
+      }
+
+      .form-container {
+        padding: 40px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+        font-size: 14px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+      }
+
+      .btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .result-container {
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 8px;
+        display: none;
+      }
+
+      .result-success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+
+      .result-error {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+
+      .result-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      .cookie-value {
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        word-break: break-all;
+        margin-top: 10px;
+      }
+
+      .loading {
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #667eea;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 10px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .log-container {
+        margin-top: 20px;
+        max-height: 200px;
+        overflow-y: auto;
+        background: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        display: none;
+      }
+
+      .log-entry {
+        margin-bottom: 5px;
+        padding: 2px 0;
+      }
+
+      .log-success {
+        color: #28a745;
+      }
+      .log-error {
+        color: #dc3545;
+      }
+      .log-info {
+        color: #17a2b8;
+      }
+      .log-warning {
+        color: #ffc107;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🍪 Cookie Extractor</h1>
+        <p>황제님을 위한 쿠키 추출 도구</p>
+      </div>
+
+      <div class="form-container">
+        <form id="cookieForm">
+          <div class="form-group">
+            <label for="targetUrl">🌐 접속할 도메인 주소</label>
+            <input
+              type="url"
+              id="targetUrl"
+              placeholder="https://dev.admin.okestro.cloud"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">📧 이메일 (ID)</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="hs.kwan@okestro.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">🔒 비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="비밀번호를 입력하세요"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cookieKeys">🍪 가져올 쿠키 이름 (쉼표로 구분)</label>
+            <input
+              type="text"
+              id="cookieKeys"
+              placeholder="_oauth2_proxy, session_id"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="envFilePath">📁 .env.local 파일 경로</label>
+            <input
+              type="text"
+              id="envFilePath"
+              placeholder="C:\Users\admin\Desktop\mono_305\okestro-cmp-app\apps\okestro-cmp-app-admin\.env.local"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn" id="extractBtn">
+            🚀 쿠키 추출 시작
+          </button>
+        </form>
+
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>쿠키를 추출하는 중입니다...</p>
+        </div>
+
+        <div class="result-container" id="resultContainer">
+          <div class="result-title" id="resultTitle"></div>
+          <div id="resultMessage"></div>
+          <div
+            class="cookie-value"
+            id="cookieValue"
+            style="display: none"
+          ></div>
+        </div>
+
+        <div class="log-container" id="logContainer">
+          <div class="log-entry log-info">로그를 확인하세요...</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

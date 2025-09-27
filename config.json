@@ -1,0 +1,16 @@
+{
+  "envFilePath": "C:\\Users\\admin\\Desktop\\mono_305\\okestro-cmp-app\\apps\\okestro-cmp-app-admin\\.env.local",
+  "cookieKeys": ["_oauth2_proxy"],
+  "targetUrl": "https://dev.admin.okestro.cloud/#/maestro",
+  "browserOptions": {
+    "headless": false,
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--ignore-certificate-errors",
+      "--ignore-ssl-errors",
+      "--ignore-certificate-errors-spki-list",
+      "--disable-web-security"
+    ]
+  }
+}
