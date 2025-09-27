@@ -2,14 +2,20 @@
 
 브라우저에서 특정 쿠키 값을 가져와서 `.env.local` 파일에 자동으로 저장하는 Electron GUI 도구입니다.
 
+[![GitHub](https://img.shields.io/github/license/goodsosbva/cookie-extraction)](https://github.com/goodsosbva/cookie-extraction)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
+[![Electron](https://img.shields.io/badge/Electron-28+-blue)](https://electronjs.org/)
+
 ## 🎯 주요 기능
 
-- **사용자 친화적인 GUI 인터페이스**
-- **자동 로그인 기능** (이메일/비밀번호 입력)
-- **실시간 로그 표시**
-- **브라우저 유지** (쿠키 추출 후 브라우저 창 유지)
-- **다중 쿠키 추출** (여러 쿠키를 한 번에)
-- **실시간 결과 표시**
+- **🎨 사용자 친화적인 GUI 인터페이스** - 직관적이고 아름다운 UI
+- **🔐 자동 로그인 기능** - 이메일/비밀번호 자동 입력
+- **📱 OTP 인증 지원** - 2FA/MFA 자동 감지 및 대기
+- **📊 실시간 로그 표시** - 진행 상황을 실시간으로 확인
+- **🌐 브라우저 유지** - 쿠키 추출 후 브라우저 창 유지
+- **🍪 다중 쿠키 추출** - 여러 쿠키를 한 번에 추출
+- **✅ 실시간 결과 표시** - 추출된 쿠키 값 즉시 확인
+- **🔧 완전 커스터마이징** - 모든 설정을 GUI에서 변경 가능
 
 ## 🚀 기능
 
@@ -141,6 +147,28 @@ COOKIE_USER_ID=user123
 
 MIT License
 
+## 📸 스크린샷
+
+![Cookie Extractor GUI](https://via.placeholder.com/800x600/667eea/ffffff?text=Cookie+Extractor+GUI)
+
+## 🤝 기여하기
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 라이선스
+
+이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+
 ## 👑 개발자
 
 황제님을 위해 특별히 제작되었습니다.
+
+## 🔗 링크
+
+- [GitHub Repository](https://github.com/goodsosbva/cookie-extraction)
+- [Issues](https://github.com/goodsosbva/cookie-extraction/issues)
+- [Releases](https://github.com/goodsosbva/cookie-extraction/releases)
