@@ -7,6 +7,9 @@
     "start": "electron .",
     "build": "electron-builder",
     "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "build-all": "electron-builder --win --mac --linux",
     "dev": "electron . --dev"
   },
   "dependencies": {
@@ -32,7 +35,14 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "icon.ico"
+      "sign": false
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": "AppImage"
     },
     "nsis": {
       "oneClick": false,

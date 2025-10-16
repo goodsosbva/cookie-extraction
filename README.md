@@ -163,10 +163,6 @@ MIT License
 
 이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
-## 👑 개발자
-
-황제님을 위해 특별히 제작되었습니다.
-
 ## 🔗 링크
 
 - [GitHub Repository](https://github.com/goodsosbva/cookie-extraction)

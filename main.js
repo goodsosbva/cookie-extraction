@@ -14,7 +14,6 @@ function createWindow() {
       contextIsolation: false,
       enableRemoteModule: true,
     },
-    icon: path.join(__dirname, "icon.ico"),
     title: "Cookie Extractor - 황제님 전용",
   });
 
