@@ -149,7 +149,8 @@ MIT License
 
 ## 📸 스크린샷
 
-![Cookie Extractor GUI](https://via.placeholder.com/800x600/667eea/ffffff?text=Cookie+Extractor+GUI)
+<img width="2553" height="1385" alt="image" src="https://github.com/user-attachments/assets/5e80c5aa-9c5c-4e3b-bfca-169938756cac" />
+
 
 ## 🤝 기여하기
 
@@ -162,6 +163,7 @@ MIT License
 ## 📝 라이선스
 
 이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+
 
 ## 🔗 링크
 
